@@ -5,7 +5,7 @@ const gulp = require("gulp")
 const browserSync = require("browser-sync").create()
 const reload = browserSync.reload
 const sass = require('gulp-sass')
-
+const ts = require('gulp-typescript');
 
 // Task server
 gulp.task("server", () => {
@@ -18,10 +18,11 @@ gulp.task("server", () => {
 
 // Task watch
 gulp.task("watch", () => {
-	gulp.watch("./index.html").on("change", reload)
+	gulp.watch("./index.html").on('change', reload)
 	gulp.watch("./assets/css/gb_styles.css").on('change', reload)
 	gulp.watch("./assets/js/gb_script.js").on('change', reload)
-	gulp.watch('./public/*.scss', ['sass'])
+	gulp.watch("./public/*.scss", ['sass'])
+	gulp.watch("./public/*.ts", ['typescript'])
 })
 
 // Task to compilate Sass
@@ -30,6 +31,16 @@ gulp.task('sass', () => {
     	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     	.pipe(gulp.dest('./assets/css/'))
     	.pipe(browserSync.stream())
+})
+
+gulp.task('typescript', () => {
+	return gulp.src('./public/*.ts')
+        .pipe(ts({
+            noImplicitAny: true,
+            out: 'gb_script.js'
+        }))
+        .pipe(gulp.dest('./assets/js/'))
+        .pipe(browserSync.stream())
 })
 
 // Task default

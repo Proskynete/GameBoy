@@ -15,7 +15,7 @@
 		<div class="gb__container">
 			<div class="gb__screen">
 				<div class="gb__game">
-					<video src="https://dl.dropboxusercontent.com/u/43885861/pokemonGB/pokemon-red.mp4"></video>
+					<video id="video" src="https://dl.dropboxusercontent.com/u/43885861/pokemonGB/pokemon-red.mp4"></video>
 				</div>
 			</div>
 			<div class="gb__text">NINTENDO <span>GAMEBOY</span> TM.</div>
@@ -25,8 +25,8 @@
 						<div class="pad__rows"></div>
 					</div>
 					<div class="gb__buttons">
-						<div id="btn__a" class="btn">A</div>
-						<div id="btn__b" class="btn">B</div>
+						<div onclick="play()" class="btn">A</div>
+						<div onclick="pause()" class="btn">B</div>
 					</div>
 				</div>
 				<div class="gb__btnDown">
