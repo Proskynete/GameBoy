@@ -6,6 +6,7 @@ const browserSync = require("browser-sync").create()
 const reload = browserSync.reload
 const sass = require('gulp-sass')
 const ts = require('gulp-typescript');
+const ghPages = require('gulp-gh-pages');
 
 // Task server
 gulp.task("server", () => {
@@ -33,6 +34,7 @@ gulp.task('sass', () => {
     	.pipe(browserSync.stream())
 })
 
+// Task to compilate TypeScript
 gulp.task('typescript', () => {
 	return gulp.src('./public/*.ts')
         .pipe(ts({
@@ -43,5 +45,12 @@ gulp.task('typescript', () => {
         .pipe(browserSync.stream())
 })
 
+// Task to deploy in github pages
+gulp.task('deploy', () => {
+	return gulp.src('./**/**/*')
+		.pipe(ghPages())
+})
+
+
 // Task default
-gulp.task("default", ["server", "watch"])
+gulp.task("default", ["server", "watch", "deploy"])
