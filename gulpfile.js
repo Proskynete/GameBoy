@@ -45,12 +45,6 @@ gulp.task('typescript', () => {
         .pipe(browserSync.stream())
 })
 
-// Task to deploy in github pages
-gulp.task('deploy', () => {
-	return gulp.src('./**/**/*')
-		.pipe(ghPages())
-})
-
 
 // Task default
-gulp.task("default", ["server", "watch", "deploy"])
+gulp.task("default", ["server", "watch"])
