@@ -3,10 +3,40 @@
 	<head>
 		<meta charset="utf-8">
 		<title>GameBoy Advance Version Classic</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<link rel="stylesheet" href="./assets/css/gb_styles.css" />
 	</head>
 	<body>
+		<p>INSTRUCTIONS<br>
+		Play - Bottom A <br>
+		Pause - Bottom B</p>
 		
+		<div class="gb__container">
+			<div class="gb__screen">
+				<div class="gb__game">
+					<video src="https://dl.dropboxusercontent.com/u/43885861/pokemonGB/pokemon-red.mp4"></video>
+				</div>
+			</div>
+			<div class="gb__text">NINTENDO <span>GAMEBOY</span> TM.</div>
+			<div class="gb__controller">
+				<div class="gb__btnUp">
+					<div class="gb__pad">
+						<div class="pad__rows"></div>
+					</div>
+					<div class="gb__buttons">
+						<div id="btn__a" class="btn">A</div>
+						<div id="btn__b" class="btn">B</div>
+					</div>
+				</div>
+				<div class="gb__btnDown">
+					<div class="btn__option"></div>
+					<div class="btn__option"></div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Script para hacer funcionar el video -->
 		<script src="./assets/js/gb_script.js"></script>
 	</body>
 </html>

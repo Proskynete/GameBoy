@@ -1,0 +1,154 @@
+// ---------------
+// Colores
+// ---------------
+$fondo: #222222;
+$carcasa: #F2EFD0;
+$screen: #360E31;
+$sombra: #E6E7E8;
+$pad: #370E30;
+$botones: #840039;
+$select: #2E0934;
+
+// ----------------
+// Mixins
+// ----------------
+@mixin box($ancho, $alto, $color){
+	width: $ancho;
+	height: $alto;
+	background-color: $color;
+}
+
+// ----------------
+// Extends
+// ----------------
+%flex_align{
+	display: flex;
+	align-items: center;
+}
+
+%flex_jcenter{
+	display: flex;
+	justify-content: center;
+}
+
+%flex_jsbetween{
+	display: flex;
+	justify-content: space-between;
+}
+
+%pad{
+	@include box(2.5rem, 6rem, $pad);
+	border-radius: .5rem;
+}
+
+// ----------------
+// Styles
+// ----------------
+html{
+	font-size: 16px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+	background-color: $fondo;
+}
+
+p{
+	color: $carcasa;
+	text-align: center;
+}
+
+.gb__container{
+	@extend %flex_align;
+	@include box(19rem, 30rem, $carcasa);
+	border-radius: 1rem 1rem 5rem 1rem;
+	margin: 2% auto;
+	flex-direction: column;
+}
+
+.gb__screen{
+	@extend %flex_align;
+	@include box(16rem, 13rem, $screen);
+	border-radius: .5rem .5rem 3rem .5rem;
+	margin: 2rem 0 0;
+	justify-content: center;
+}
+
+video{
+	@include box(100%, 100%, transparent);
+}
+
+.gb__game{
+	@include box(10rem, 9rem, #65B03B);
+}
+
+.gb__text{
+	width: 16rem;
+	font-size: 10px;
+	color: #3F0680;
+	margin: .3rem 0 2rem;
+
+	& span{
+		font-size: 16px;
+		font-style: italic;
+	}
+}
+
+.gb__controller{
+	width: 16rem;
+	margin-bottom: 2rem;
+}
+
+.gb__btnUp{
+	@extend %flex_jsbetween;
+	@include box(100%, 6rem, transparent);
+}
+
+.gb__pad{
+	@extend %flex_jcenter;
+	@include box(6rem, 6rem, transparent);
+}
+
+.pad__rows{
+	@extend %pad;
+
+	&::before{
+		@extend %pad;
+		content: "";
+		transform: rotate(90deg);
+		position: absolute;
+	}
+}
+
+.gb__buttons{
+	@extend %flex_jsbetween;
+	@include box(7rem, 3rem, transparent);
+	margin-top: 1.5rem;
+	transform: rotate(-30deg);
+	border-radius: 2rem;
+}
+
+.btn{
+	@extend %flex_jcenter;
+	@include box(3rem, 3rem, $botones);
+	border-radius: 50%;
+	align-items: center;
+	color: #AA0A4A;
+
+	&:hover{
+		background-color: #91013D;
+	}
+}
+
+.gb__btnDown{
+	@extend %flex_jcenter;
+	width: 100%;
+	margin-top: 1rem;
+}
+
+.btn__option{
+	@include box(1rem, 3rem, $select);
+	margin: 0 1rem;
+	border-radius: 1rem;
+	transform: rotate(50deg);
+}
